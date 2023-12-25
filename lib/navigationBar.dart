@@ -19,7 +19,7 @@ class barranav extends StatelessWidget {
         /*tabBorder: Border.all(
           color: Colors.blue,
         ),*/
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(20),
         gap: 20,
         activeColor: Colors.blue,
         onTabChange: (value) {

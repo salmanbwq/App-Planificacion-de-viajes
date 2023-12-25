@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -39,12 +41,13 @@ class _homeState extends State<home> {
                       image: AssetImage('assets/images/vuelo.jpg'),
                       fit: BoxFit.cover)),
               child: Container(
-                margin: EdgeInsets.only(top: 50, right: 150),
+                margin: EdgeInsets.only(bottom: 100, right: 350),
                 child: Center(
                     child: Text(
-                  'Reserva tu vuelo',
+                  'Vuela',
                   style: TextStyle(
-                    color: Colors.blue,
+                    shadows: [Shadow(color: Colors.black, blurRadius: 20)],
+                    color: Colors.white,
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                   ),
@@ -66,8 +69,9 @@ class _homeState extends State<home> {
                 margin: EdgeInsets.only(bottom: 80, right: 100),
                 child: Center(
                     child: Text(
-                  'Reserva tren',
+                  'Reserva un tren',
                   style: TextStyle(
+                    shadows: [Shadow(color: Colors.black, blurRadius: 20)],
                     color: Colors.white,
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
@@ -87,11 +91,12 @@ class _homeState extends State<home> {
                       image: AssetImage('assets/images/bus.jpg'),
                       fit: BoxFit.cover)),
               child: Container(
-                margin: EdgeInsets.only(top: 350, right: 150),
+                margin: EdgeInsets.only(top: 350, right: 200),
                 child: Center(
                     child: Text(
-                  'Reserva tu bus',
+                  'Súbete al bus',
                   style: TextStyle(
+                    shadows: [Shadow(color: Colors.black, blurRadius: 30)],
                     color: Colors.white,
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
@@ -106,11 +111,16 @@ class _homeState extends State<home> {
   }
 }
 
-class Lugares extends StatelessWidget {
+class Lugares extends StatefulWidget {
   const Lugares({
     super.key,
   });
 
+  @override
+  State<Lugares> createState() => _LugaresState();
+}
+
+class _LugaresState extends State<Lugares> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -194,40 +204,47 @@ class Lugares extends StatelessWidget {
   }
 }
 
-class BarraBusqueda extends StatelessWidget {
+class BarraBusqueda extends StatefulWidget {
   const BarraBusqueda({
     super.key,
   });
 
   @override
+  State<BarraBusqueda> createState() => _BarraBusquedaState();
+}
+
+class _BarraBusquedaState extends State<BarraBusqueda> {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.zero,
+      margin: EdgeInsets.only(left: 5, right: 10),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue),
-          borderRadius: BorderRadius.all(Radius.circular(20))),
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.blue,
+              blurRadius: 4,
+            )
+          ]),
+      padding: EdgeInsets.zero,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Container(
-              // Limitar el ancho del TextField
-              constraints: BoxConstraints(maxWidth: 400.0),
-              child: TextField(
-                decoration: InputDecoration(
+              constraints: const BoxConstraints(maxWidth: 390.0),
+              child: const TextField(
+                decoration: const InputDecoration.collapsed(
                   hintText: 'Buscar destinos...',
-                  border: OutlineInputBorder(),
                 ),
               ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 35),
-            child: InkWell(
-              onTap: () {},
-              child: Icon(Icons.search),
-            ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
           ),
         ],
       ),
